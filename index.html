@@ -23,13 +23,14 @@ style="font-size:35px; padding:20px 40px; background:red; color:white; border:no
 <br><br>
 
 <!-- HANG -->
-<audio id="audio">
+<audio id="audio" autoplay>
   <source src="Voicy_Impearial March.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+let audio = document.getElementById("audio");
+
 function playAudio() {
-  let audio = document.getElementById("audio");
   let kep = document.getElementById("kep");
 
   audio.volume = 0.2;
@@ -39,7 +40,6 @@ function playAudio() {
 }
 
 function stopAudio() {
-  let audio = document.getElementById("audio");
   let kep = document.getElementById("kep");
 
   audio.pause();
@@ -48,10 +48,13 @@ function stopAudio() {
   kep.style.display = "block";
 }
 
-// 👉 AUTOMATIKUS INDÍTÁS
+// 🔥 AUTOMATIKUS INDÍTÁS PRÓBÁLKOZÁS
 window.onload = function() {
-  playAudio();
-}
+  audio.volume = 0.2;
+  audio.play().catch(() => {
+    console.log("Autoplay blokkolva");
+  });
+};
 </script>
 
 </body>
